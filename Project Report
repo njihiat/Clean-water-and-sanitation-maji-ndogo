@@ -34,6 +34,14 @@ wat_unimp_r - The estimated rural share of people with unimproved services (%)
 wat_lim_u - The estimated urban share of people with limited services (%)
 
 
+Data Analytics Process:
+IMPORT and CLEANING
+1. Imported dataset to Google Sheets.
+2. Fixed the semi-colon-separated column headers by splitting text into columns 
+3. Fixed the other five instances of semi-colon-separated values in the cells.
+4.
+
+
 
 
 
