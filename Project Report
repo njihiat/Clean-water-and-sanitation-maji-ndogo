@@ -11,5 +11,29 @@ Questions to Answer.
 ● How do these measures of water access compare across different types of areas?
 ● What does the national access to water look like based on national population size?
 ● What does the urban access to water look like based on urban population size?
-● What does the rural access look like?
-● What is the effect of national population size and urbanisation on GNI and water access?
+● What does rural access look like?
+● How does national population size and urbanization affect GNI and water access?
+
+Data Definition: There is a total of 16 features represented in the columns of the dataset
+
+pop_n - The National population size is estimated in thousands.
+wat_limit_n - The estimated national share of people with limited services (%).
+name - The country or area name.
+pop_u - The urban population share estimate in percentage points (%).
+wat_unimp_n - The estimated national share of people with unimproved service (%).
+income_group - The country's classification according to income group.
+wat_bas_n - The estimated national share of people with at least basic service (%).
+wat_sur_n - The estimated national share of people with surface service (%).
+wat_bas_r - The estimated rural share with at least basic service (%)
+wat_sur_r - The estimated rural share of people with surface service (%)
+wat_unimp_u - The estimated urban share of people with unimproved services (%)
+wat_lim_r  - The estimated rural share of people with limited services (%)
+wat_bas_u - The estimated urban share of people with basic services (%)
+wat_sur_u - The estimated urban share of people with surface services (%)
+wat_unimp_r - The estimated rural share of people with unimproved services (%)
+wat_lim_u - The estimated urban share of people with limited services (%)
+
+
+
+
+
