@@ -12,7 +12,7 @@ Questions to Answer.
 ● What does the national access to water look like based on national population size?
 ● What does the urban access to water look like based on urban population size?
 ● What does rural access look like?
-● How does national population size and urbanization affect GNI and water access?
+● How do national population size and urbanization affect GNI and water access?
 
 Data Definition: There is a total of 16 features represented in the columns of the dataset
 
@@ -39,7 +39,20 @@ IMPORT and CLEANING
 1. Imported dataset to Google Sheets.
 2. Fixed the semi-colon-separated column headers by splitting text into columns 
 3. Fixed the other five instances of semi-colon-separated values in the cells.
-4.
+
+INVESTIGATING POPULATION SIZE
+1. Created a new sheet called Global 2020 report
+2. On the new sheet, determined the total national population and added the
+estimated world population (7.821 billion).
+3. On the main sheet, created a new feature(column) called pop_u_val, which is the
+urban population value.
+4. In Global 2020 report sheet, determined the total urban population and also estimated
+urban population which is 55% of the estimated total world population.
+5. In addition, Calculated the total urban population from pop_u_val column in the main sheet
+6. Calculated the percentage difference between the total population included in the 
+dataset and the estimated total population for both the national and urban population
+7.Created a line chart to visualize the comparison between national population living
+in rural versus urban areas.
 
 
 
