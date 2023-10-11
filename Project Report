@@ -52,7 +52,19 @@ urban population which is 55% of the estimated total world population.
 6. Calculated the percentage difference between the total population included in the 
 dataset and the estimated total population for both the national and urban population
 7.Created a line chart to visualize the comparison between national population living
-in rural versus urban areas.
+in rural versus urban areas, using a new feature called pop_r which is the rural share of the population in percentage 
+using the features pop_u and pop_n.
+- The line chart is not very comprehensible due to outliers.
+- To increase the readability of our data visualization, changed the unit of the x-axis
+- Created a new feature in the original dataset called pop_n (m) which is pop_n rounded 
+to the nearest million.
+- Change the x-axis to the newly created pop_n (m) and select the aggregate using an average.
+- Use smooth lines for our chart and add a point representation of the aggregated
+data point.
+
+INVESTIGATING ACCESS BY AREA
+
+
 
 
 
