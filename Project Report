@@ -4,14 +4,11 @@ President Naledi has tasked me with finding nuggets of insight that will help th
 completing a survey in the country, a database of 60,000 records was created.
 
 The database contains these tables:
-  data_dictionary
-  employee
-  global_water_access
-  location
-  visits
-  water_quality
-  water_source
-  well_pollution
+  data_dictionary,   employee,   global_water_access,   location,   visits,  water_quality,  water_source,  well_pollution
+
+Some tables contained errors as evident after running some SQL queries as outlined in the SQL code document. The errors were removed as part
+of the data cleaning process.
+The table affected included the water_pollution table.
 
 
 
