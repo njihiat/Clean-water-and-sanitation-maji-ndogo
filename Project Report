@@ -1,70 +1,17 @@
-Analytics Process:
-  Import and Clean Data
-  Create new features and Viz
-  Interpret the results
-  Answer the following questions.
+Solving the water crisis in a fictional country Maji Dogo.
 
-Questions to Answer.
-● How do the world population estimates compare to the provided dataset populations?
-● How does the urban population share compare to the rural population?
-● What is the tendency and spread of the different water access features?
-● How do these measures of water access compare across different types of areas?
-● What does the national access to water look like based on national population size?
-● What does the urban access to water look like based on urban population size?
-● What does rural access look like?
-● How do national population size and urbanization affect GNI and water access?
+President Naledi has tasked me with finding nuggets of insight that will help the government solve the water crisis in Maji Dogo. After
+completing a survey in the country, a database of 60,000 records was created.
 
-Data Definition: There is a total of 16 features represented in the columns of the dataset
-
-pop_n - The National population size is estimated in thousands.
-wat_limit_n - The estimated national share of people with limited services (%).
-name - The country or area name.
-pop_u - The urban population share estimate in percentage points (%).
-wat_unimp_n - The estimated national share of people with unimproved service (%).
-income_group - The country's classification according to income group.
-wat_bas_n - The estimated national share of people with at least basic service (%).
-wat_sur_n - The estimated national share of people with surface service (%).
-wat_bas_r - The estimated rural share with at least basic service (%)
-wat_sur_r - The estimated rural share of people with surface service (%)
-wat_unimp_u - The estimated urban share of people with unimproved services (%)
-wat_lim_r  - The estimated rural share of people with limited services (%)
-wat_bas_u - The estimated urban share of people with basic services (%)
-wat_sur_u - The estimated urban share of people with surface services (%)
-wat_unimp_r - The estimated rural share of people with unimproved services (%)
-wat_lim_u - The estimated urban share of people with limited services (%)
-
-
-Data Analytics Process:
-IMPORT and CLEANING
-1. Imported dataset to Google Sheets.
-2. Fixed the semi-colon-separated column headers by splitting text into columns 
-3. Fixed the other five instances of semi-colon-separated values in the cells.
-
-INVESTIGATING POPULATION SIZE
-1. Created a new sheet called Global 2020 report
-2. On the new sheet, determined the total national population and added the
-estimated world population (7.821 billion).
-3. On the main sheet, created a new feature(column) called pop_u_val, which is the
-urban population value.
-4. In Global 2020 report sheet, determined the total urban population and also estimated
-urban population which is 55% of the estimated total world population.
-5. In addition, Calculated the total urban population from pop_u_val column in the main sheet
-6. Calculated the percentage difference between the total population included in the 
-dataset and the estimated total population for both the national and urban population
-7.Created a line chart to visualize the comparison between national population living
-in rural versus urban areas, using a new feature called pop_r which is the rural share of the population in percentage 
-using the features pop_u and pop_n.
-- The line chart is not very comprehensible due to outliers.
-- To increase the readability of our data visualization, changed the unit of the x-axis
-- Created a new feature in the original dataset called pop_n (m) which is pop_n rounded 
-to the nearest million.
-- Change the x-axis to the newly created pop_n (m) and select the aggregate using an average.
-- Use smooth lines for our chart and add a point representation of the aggregated
-data point.
-
-INVESTIGATING ACCESS BY AREA
-
-
+The database contains these tables:
+  data_dictionary
+  employee
+  global_water_access
+  location
+  visits
+  water_quality
+  water_source
+  well_pollution
 
 
 
