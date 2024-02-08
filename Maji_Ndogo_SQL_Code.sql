@@ -139,7 +139,46 @@ GROUP BY type_of_water_source;
     as one tap, so not 644 people per tap.
     But others are correct, for example 279 people share one well. */
     
+    #------ START OF A SOLUTION ----
+    #There is need to make data driven decision to improve the infrastructure. So we need to rank the sources by the number of people served.
+    # Lets exclude the tap in home because its the best and does not need an improvement. 
+    SELECT 
+		type_of_water_source, 
+        SUM(number_of_people_served) AS Total_people_served,
+        RANK() OVER(ORDER BY SUM(number_of_people_served) DESC) AS Rank_of_sources
+    FROM water_source
+    WHERE type_of_water_source <> 'tap_in_home'
+    GROUP BY type_of_water_source;
+    
+/*		shared_tap			11945272		1
+		well				4841724			2
+		tap_in_home_broken	3799720			3
+		river				2362544			4  
+        So we need to fix share_tap first, then well. But which taps or wells are we going to fix first? Lets apply RANK per individual sources.*/
 
+SELECT 
+	source_id,
+    type_of_water_source,
+    SUM(number_of_people_served) AS Total_people_served,
+    ROW_NUMBER () OVER(PARTITION BY type_of_water_source ORDER BY SUM(number_of_people_served) DESC) AS Rank_of_sources
+    # Have used Row_number instead of Rank to make it easy for engineers to keep track of their progress.
+FROM water_source
+WHERE type_of_water_source <> 'tap_in_home'
+GROUP BY source_id, type_of_water_source;
+
+
+#Lets dig on the visits table and see the hidden story. Check out the time it took to conduct the survey.
+SELECT DATEDIFF(MAX(time_of_record), MIN(time_of_record)) AS survey_time
+FROM visits;
+
+#The survey took 924 days which is more than two years, incredicle!
+
+#the average queue time for water is
+SELECT AVG(time_in_queue)
+FROM visits
+WHERE time_in_queue != 0; # Zero indicates that the water source a tap in home or others that does not have a queue time. 
+
+#The average queue time is 123 minutes. 
 
 
 
