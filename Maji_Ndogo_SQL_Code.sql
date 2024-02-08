@@ -119,6 +119,29 @@ ORDER BY province_name, Number_of_sources DESC;
     by Harare (1650), Amina(1090) and Lusaka(1070). By province, the water source are evenly distributed with the highest kilimani(9510)
     and the lowest Hawassa (6030). These results shows that we have enough records to base our decision on*/
     
+#Lets dig deep into our data, the water_source table, what story does it tell?
+SELECT type_of_water_source, COUNT(source_id) AS number_of_sources
+FROM water_source
+GROUP BY type_of_water_source;
+
+# There wells are the highest in number (17383). but how many are contaminated?
+SELECT COUNT(source_id) FROM well_pollution WHERE results != 'Clean' ;
+# 12467 are contaminated, thats a huge number!. 
+
+
+#Lets find out how many people are served by each water source
+SELECT type_of_water_source, ROUND(AVG(number_of_people_served)) AS Average_people_served
+FROM water_source
+GROUP BY type_of_water_source;
+
+	/*tap_in_home	644 	tap_in_home_broken	649		well	279		shared_tap	2071	river	699.
+    The query shows that on average 644 share a tap in home, thats incorrect. Our surveyors combined households and recorded that information
+    as one tap, so not 644 people per tap.
+    But others are correct, for example 279 people share one well. */
+    
+
+
+
 
 
 
