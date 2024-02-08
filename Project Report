@@ -31,6 +31,12 @@ of people served, as shown in the SQL CODE LINE 148, we get this table
                             river              	2362544	    4
 We have excluded the tap in the home because they are in the best condition and no improvement is needed. Shared taps need to be improved first,
 then wells, and then repairing broken taps in homes in that order. But what taps are we going to fix?? 
+Good, by using row_number ranking and window function, I can rank the sources according to the total number of people served and give the
+engineers a fine list that they can follow to make improvements and track their progress.
+
+Shall we look at the visit table? 
+
+
 
 
 
