@@ -14,7 +14,23 @@ The delve into the location table clearly shows that there are enough records an
 Our dataset represents the actual situation on the ground. 60% of the water sources are in the rural areas.
 
 According to the global_water_access table, the national population of Maji Ndogo is 27,628,100 people. But the accurate number from the water_source
-table is 27,628,140 this shows that our records are have the same information across different tables.
+the table is 27,628,140 this shows that our records have the same information across different tables.
+The average population per water source is; tap_in_home	644 	tap_in_home_broken	649		well	279		shared_tap	2071	river	699. This explains
+a lot, first the tap in home records are combined taps of several homes, taking an average of 6 people per household then 644/6 ~app 100 taps 
+per one record. 
+The shared taps are the most concerning, with 2000 people per tap, no wonder there are long waiting times in the queues, adding more public taps
+should be the priority of the government.
+There are on average 279 people served per well. There are 17383 wells but out of those 12467 are contaminated, that's a huge number right?
+
+Let's start with the solution.
+We need to make data-driven decisions on how to fix the water sources that need improvement. After ranking the sources according to the number
+of people served, as shown in the SQL CODE LINE 148, we get this table
+                            shared_tap	        11945272	  1
+                            well	              4841724	    2
+                            tap_in_home_broken	3799720	    3
+                            river              	2362544	    4
+We have excluded the tap in the home because they are in the best condition and no improvement is needed. Shared taps need to be improved first,
+then wells, and then repairing broken taps in homes in that order. But what taps are we going to fix?? 
 
 
 
