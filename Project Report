@@ -13,6 +13,9 @@ The table affected included the water_pollution table.
 The delve into the location table clearly shows that there are enough records and that the entire country was covered during the survey exercise.
 Our dataset represents the actual situation on the ground. 60% of the water sources are in the rural areas.
 
+According to the global_water_access table, the national population of Maji Ndogo is 27,628,100 people. But the accurate number from the water_source
+table is 27,628,140 this shows that our records are have the same information across different tables.
+
 
 
 
