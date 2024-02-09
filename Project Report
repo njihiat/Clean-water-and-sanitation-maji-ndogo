@@ -20,7 +20,7 @@ a lot, first the tap in home records are combined taps of several homes, taking 
 per one record. 
 The shared taps are the most concerning, with 2000 people per tap, no wonder there are long waiting times in the queues, adding more public taps
 should be the priority of the government.
-There are on average 279 people served per well. There are 17383 wells but out of those 12467 are contaminated, that's a huge number right?
+There are on average 279 people served per well. There are 17383 wells but out of those 12467 are contaminated, that's a huge number, right?
 
 Let's start with the solution.
 We need to make data-driven decisions on how to fix the water sources that need improvement. After ranking the sources according to the number
@@ -35,6 +35,11 @@ Good, by using row_number ranking and window function, I can rank the sources ac
 engineers a fine list that they can follow to make improvements and track their progress.
 
 Shall we look at the visit table? 
+The survey took 924 days, which is about 2 and a half years. 
+The average queue time is 123 minutes, which is about 2 hours, but some days have longer average hours than others. Saturday, for example
+has an average of 246 minutes while Sunday has 82 minutes.
+The queue time also varies according to the time of the day. Morning hours have longer queues.
+
 
 
 
