@@ -39,6 +39,53 @@ The survey took 924 days, which is about 2 and a half years.
 The average queue time is 123 minutes, which is about 2 hours, but some days have longer average hours than others. Saturday, for example,
 has an average of 246 minutes while Sunday has 82 minutes.
 The queue time also varies according to the time of the day. Morning hours have longer queues.
+Hour_of_the_day	Sunday	Monday	Tuesday	Wednesday	Thursday	Friday	Saturday	Sunday
+6:00	79	190	134	112	134	153	247	79
+7:00	82	186	128	111	139	156	247	82
+8:00	86	183	130	119	129	153	247	86
+9:00	84	127	105	94	99	107	252	84
+10:00	83	119	99	89	95	112	259	83
+11:00	78	115	102	86	99	104	236	78
+12:00	78	115	97	88	96	109	239	78
+13:00	81	122	97	98	101	115	242	81
+14:00	83	127	104	92	96	110	244	83
+15:00	83	126	104	88	92	110	248	83
+16:00	83	127	99	90	99	109	251	83
+17:00	79	181	135	121	129	151	251	79
+18:00	80	174	122	113	132	158	240	80
+19:00	127	159	145	176	137	103	282	127
+
+This survey aimed to identify the water sources people use, the conditions, and the time people spend in the queue.
+By now there are some insights that we have uncovered in the numbers and characters.
+    1. Most water sources are in the rural areas
+    2. 43% of the people share taps, and 2000 people share one tap.
+    3. 31% of the people have piped water but 45 of them face breakage problems and have no access to water.
+    4. 18%of the people use well but only 28% of them are clean and safe to use.
+    5. The citizens face long queue times averaging 120 minutes.
+    6. In terms of queues:
+        - Saturdays have the longest queues
+        - Queues are longer in the evening and afternoon
+        - Wednesday and Sunday have shorter queues.
+
+------ START OF THE PLAN --------
+1. To significantly cut down queue times for everyone, let's concentrate our efforts on enhancing the shared tap experience.
+2. Resolving the contamination issue in most wells is crucial, as it brings substantial benefits to the majority of people that
+    we need to address.
+3. Benefiting the majority and concurrently diminishing wait times for others can be achieved by addressing and improving our 
+    existing infrastructure; we need to focus on this.
+4. Allocating resources more effectively calls for temporarily postponing the fixing of broken taps, a step we need to take at the moment.
+5. To tap into abundant sources waiting to be optimized and enhanced, our engineers need to prepare for venturing into rural areas,
+    which we need them to do.
+
+---- PRACTICAL SOLUTION ------
+1. For those communities using rivers, we can dispatch trucks to supply water as a short-term fix.
+2. If the communities are using wells, we need to install UV filters and reverse osmosis filters in the wells as we look into what is 
+  contaminating the water.
+3. For shared taps, we can send tanks to the busiest taps and the busiest time of the day as we install extra taps to reduce the queue time
+to 30 minutes.
+4. Fixing the infrastructure though resource intensive, will benefit most people and therefore offers a significant impact.
+
+
 
 
 
