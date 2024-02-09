@@ -75,7 +75,12 @@ once. There should be no record of second visit for sources with quality score o
  SET results = 'Contaminated: Biological'
  WHERE biological > 0.01 AND results = 'Clean';
  
- #---------- ------------------------ PART 2 -------------------------------------------------- -----
+ 
+ 
+ #***************++++++++++++++++**************----- PART 2----- *****************+++++++++*************-------------*************
+ 
+ 
+ 
  #CLUSTERING DATA TO UNVEIL THE MAJI NDOGO WATER CRISIS
  
  #The employee table lacks the emails, at some point they will be needed for communication. Lets add them
@@ -247,7 +252,11 @@ FROM visits
 WHERE time_in_queue != 0
 GROUP BY Hour_of_the_day
 ORDER BY Hour_of_the_day ASC;
+
+
         
+#***************+++++++++++******-------- PART 3 ---------***********++++++++++++++++*************************************
+
 
 
 
