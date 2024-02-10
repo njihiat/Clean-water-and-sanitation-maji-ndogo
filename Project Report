@@ -6,22 +6,29 @@ completing a survey in the country, a database of 60,000 records was created.
 The database contains these tables:
   data_dictionary,   employee,   global_water_access,   location,   visits,  water_quality,  water_source,  well_pollution
 
+------ ERRORS --------
 Some tables contained errors as evident after running some SQL queries as outlined in the SQL code document. The errors were removed as part
 of the data cleaning process.
-The table affected included the water_pollution table.
+The table affected included the water_pollution table. The auditors are going to conduct an independent investigation to find if there were
+mistakes.
 
+-----LOCATION -------
 The delve into the location table clearly shows that there are enough records and that the entire country was covered during the survey exercise.
 Our dataset represents the actual situation on the ground. 60% of the water sources are in the rural areas.
 
+-----POPULATION -------
 According to the global_water_access table, the national population of Maji Ndogo is 27,628,100 people. But the accurate number from the water_source
 the table is 27,628,140 this shows that our records have the same information across different tables.
 The average population per water source is; tap_in_home	644 	tap_in_home_broken	649		well	279		shared_tap	2071	river	699. This explains
 a lot, first the tap in home records are combined taps of several homes, taking an average of 6 people per household then 644/6 ~app 100 taps 
 per one record. 
+
+-------TAPS AND WELLS --------------- 
 The shared taps are the most concerning, with 2000 people per tap, no wonder there are long waiting times in the queues, adding more public taps
 should be the priority of the government.
 There are on average 279 people served per well. There are 17383 wells but out of those 12467 are contaminated, that's a huge number, right?
 
+----------SOLUTION---------------------
 Let's start with the solution.
 We need to make data-driven decisions on how to fix the water sources that need improvement. After ranking the sources according to the number
 of people served, as shown in the SQL CODE LINE 148, we get this table
@@ -34,27 +41,15 @@ then wells, and then repairing broken taps in homes in that order. But what taps
 Good, by using row_number ranking and window function, I can rank the sources according to the total number of people served and give the
 engineers a fine list that they can follow to make improvements and track their progress.
 
+
+----VISITS------------
 Shall we look at the visit table? 
 The survey took 924 days, which is about 2 and a half years. 
 The average queue time is 123 minutes, which is about 2 hours, but some days have longer average hours than others. Saturday, for example,
 has an average of 246 minutes while Sunday has 82 minutes.
 The queue time also varies according to the time of the day. Morning hours have longer queues.
-Hour_of_the_day	Sunday	Monday	Tuesday	Wednesday	Thursday	Friday	Saturday	Sunday
-6:00	79	190	134	112	134	153	247	79
-7:00	82	186	128	111	139	156	247	82
-8:00	86	183	130	119	129	153	247	86
-9:00	84	127	105	94	99	107	252	84
-10:00	83	119	99	89	95	112	259	83
-11:00	78	115	102	86	99	104	236	78
-12:00	78	115	97	88	96	109	239	78
-13:00	81	122	97	98	101	115	242	81
-14:00	83	127	104	92	96	110	244	83
-15:00	83	126	104	88	92	110	248	83
-16:00	83	127	99	90	99	109	251	83
-17:00	79	181	135	121	129	151	251	79
-18:00	80	174	122	113	132	158	240	80
-19:00	127	159	145	176	137	103	282	127
 
+-------------INSIGHTS--------------
 This survey aimed to identify the water sources people use, the conditions, and the time people spend in the queue.
 By now there are some insights that we have uncovered in the numbers and characters.
     1. Most water sources are in the rural areas
@@ -85,9 +80,19 @@ By now there are some insights that we have uncovered in the numbers and charact
 to 30 minutes.
 4. Fixing the infrastructure though resource intensive, will benefit most people and therefore offers a significant impact.
 
-
+------- AUDITOR REPORT------------
 Let us weave the data threads to unveil the Maji Ndogo Narrative. 
-First, the auditor report is back. 
+First, the auditor report is back. Check to see if there are any discrepancies and if there is any pattern. Yes, 102 scores were wrongly recorded.
+Luckily, we had not used the quality table so our earlier results are correct. What we did use is the type of water source, and according to 
+the query, source_type is correctly recorded.
+Who made the errors?
+Let us investigate our employees, mistakes are normal but this could be done on purpose. Four of our employees made above-average errors,
+Bello Azibo	26	
+Malachi Mavuso	21	
+Zuriel Matembo	17	
+Lalitha Kaburi	7	
+
+
 
 
 
