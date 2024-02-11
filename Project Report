@@ -43,7 +43,7 @@ engineers a fine list that they can follow to make improvements and track their 
 
 
 ----VISITS------------
-Shall we look at the visit table? 
+Would you like us to look at the visit table? 
 The survey took 924 days, which is about 2 and a half years. 
 The average queue time is 123 minutes, which is about 2 hours, but some days have longer average hours than others. Saturday, for example,
 has an average of 246 minutes while Sunday has 82 minutes.
@@ -63,7 +63,7 @@ By now there are some insights that we have uncovered in the numbers and charact
         - Wednesday and Sunday have shorter queues.
 
 ------ START OF THE PLAN --------
-1. To significantly cut down queue times for everyone, let's concentrate our efforts on enhancing the shared tap experience.
+1. To significantly cut down queue times for everyone, let's concentrate on enhancing the shared tap experience.
 2. Resolving the contamination issue in most wells is crucial, as it brings substantial benefits to the majority of people that
     we need to address.
 3. Benefiting the majority and concurrently diminishing wait times for others can be achieved by addressing and improving our 
@@ -86,11 +86,13 @@ First, the auditor report is back. Check to see if there are any discrepancies a
 Luckily, we had not used the quality table so our earlier results are correct. What we did use is the type of water source, and according to 
 the query, source_type is correctly recorded.
 Who made the errors?
-Let us investigate our employees, mistakes are normal but this could be done on purpose. Four of our employees made above-average errors,
+Let us investigate our employees, mistakes are normal but this could be done intentionally. Four of our employees made above-average errors,
 Bello Azibo	26	
 Malachi Mavuso	21	
 Zuriel Matembo	17	
 Lalitha Kaburi	7	
+Further investigating these records, mention of corrupt officers is recorded by the auditor as statements from the citizens of Maji Ndogo.
+This is a serious crime considering the dedication our President has put into finding a solution to the country's water crisis.
 
 
 
