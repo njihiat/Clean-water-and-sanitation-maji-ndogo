@@ -49,6 +49,7 @@ once. There should be no record of second visit for sources with quality score o
  FROM water_quality
  WHERE subjective_quality_score = 10 AND visit_count = 2;
  #There are 218 errors, it could be a mistake in the recording, this need to be investigated. Errors are normal in any data.
+ #An independent auditor will be assigned to investigate the errors and the report sent to us.
  
  /*Water pollution records pollution cases in each water source, There are clean and contaminated water source. Lets look if there are errors
  It will be an error is a source has biological or chemical contamination but indicated as clean. Sources with biological or pollutant more 
@@ -258,7 +259,66 @@ ORDER BY Hour_of_the_day ASC;
 #***************+++++++++++******-------- PART 3 ---------***********++++++++++++++++*************************************
 # WEAVING THE DATA THREADS OF MAJI NDOGO'S NARRATIVES.
 
+#The auditor report is out and lets find out if the scores are different
 
+CREATE VIEW incorrect_records AS ( #Created a view called incorrect_records to store all the records with an error
+SELECT 
+	visits.location_id, 
+    visits.record_id,
+    employee.employee_name,
+    true_water_source_score AS auditors_score, 
+    subjective_quality_score AS employee_score,
+    statements
+FROM auditor_report
+JOIN visits
+	ON visits.location_id = auditor_report.location_id
+JOIN water_quality
+	ON water_quality.record_id = visits.record_id
+JOIN employee
+	ON visits.assigned_employee_id = employee.assigned_employee_id
+WHERE 
+	visits.visit_count = 1 AND true_water_source_score != subjective_quality_score);
+
+WITH error_count AS ( # This CTE counts the number of mistakes of each employee
+SELECT 
+	employee_name, 
+    COUNT(employee_name) AS errors_made
+FROM incorrect_records # This is the view storing records where scores were found to be different
+GROUP BY employee_name ),
+suspect_list AS ( # This CTE finds the employees with above average errors.
+SELECT 
+	employee_name,
+    errors_made
+ FROM error_count
+ WHERE errors_made > (SELECT AVG(errors_made) FROM error_count)) # filter records to get those that are above average
+ 
+ SELECT 
+	employee_name,
+    location_id,
+    statements
+FROM incorrect_records
+WHERE employee_name IN (SELECT employee_name FROM suspect_list) AND statements LIKE '%_cash_%';
+
+/*There are 102 rows with different scores. We had not yet used the water quality table so our results are not affected by the inconstitency,
+If there was an error, lets confirm if the water source were recorded correctly.
+Lastly we checked who are the employees that made the errors, to see if it was a mistake or it was done on purpose. By using a view (incorrect_records)
+ and 2 CTE (error_count and suspect_list) we see that 4 employees made a big number of errors which were above average. On digging deep into
+ the statements, we find metion of cash and corruption cases of the employees. The team has dedicated themselves into finding a solution into 
+ Maji Ndogo crisis, its hard to uncover this. Though this is not proof, it would need to be escalated for action to be taken*/
+
+
+SELECT 
+	auditor_report.type_of_water_source AS auditor_source, 
+    water_source.type_of_water_source AS water_source_type
+FROM auditor_report
+JOIN visits
+	ON visits.location_id = auditor_report.location_id
+JOIN water_source
+	ON water_source.source_id = visits.source_id
+WHERE auditor_report.type_of_water_source != water_source.type_of_water_source;
+#The water source was well recorded
+
+# That was epic, so many stories that numbers and characters can tell!!
 
 
 
