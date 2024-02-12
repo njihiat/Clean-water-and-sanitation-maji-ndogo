@@ -1,3 +1,10 @@
+/*
+	THIS DOCUMENT SHOWS THE SQL QUERIES, VIEWS, JOINS, CTEs, COMMENTS AND SOME RESULT SETS OF THE ANALYSIS ON MAJI NDOGO WATER PROJECT DATABASE.
+	THE QUERIES WERE WRITTEN AND RUN ON MYSQL WORKBENCH. 
+	PROPER COMMENTS HAVE BEEN ADDED FOR A BETTER UNDERSTANDING OF THE CODE.
+    THIS SQL CODE CANNOT BE EXECUTED AS ONE, SOME CODE ARE DEPENDENT ON OTHERS IN AN INSEQUENTIAL ORDER.
+*/
+
 #**** --------------- ----------------- ---------- PART 1 ----------------------------------- -------------------- ------*****
 USE md_water_services;
 
@@ -320,5 +327,65 @@ WHERE auditor_report.type_of_water_source != water_source.type_of_water_source;
 
 # That was epic, so many stories that numbers and characters can tell!!
 
+#************-----------************--------------- PART 4 -----------*****************------------********************
+#CHARTING THE COURSE OF MAJI NDOGO'S WATER FUTURE
 
+/*Several tables have information that can be used to visualize how we can tackle this projects.
+	The visits table links the source_id with the location id, and includes the time in queue,
+    The Water source table has the different type of water source and number of people served,
+    The location table has the address, town and province of the water sources,
+    The well pollution table has information about water quality of the wells.*/
+#Let's find where are our sources, type, number of people served and time in queue.
+
+CREATE VIEW combined_analysis AS # This view assembles data from different tables into one result set.
+SELECT
+	province_name,
+    town_name, 
+    location_type,
+    type_of_water_source,
+    number_of_people_served,
+    time_in_queue,
+    results
+FROM visits
+INNER JOIN location
+	ON visits.location_id = location.location_id
+INNER JOIN water_source
+	ON visits.source_id = water_source.source_id
+LEFT JOIN well_pollution
+	ON visits.source_id = well_pollution.source_id
+WHERE visit_count = 1;
+
+# We get 39650 sources. Make it a view inorder for future analysis on the result set.
+# Next, we look at the totap population of various provinces per water source type. 
+WITH province_total_pop AS (
+SELECT
+	province_name,
+    SUM(number_of_people_served) AS total_population
+FROM combined_analysis
+GROUP BY province_name)
+
+SELECT 
+	ca.province_name,
+    total_population,
+    ROUND((SUM(CASE WHEN type_of_water_source = 'well'
+		THEN number_of_people_served
+	ELSE 0 END)*100.0 / pt.total_population), 0) AS well,
+   ROUND((SUM(CASE WHEN type_of_water_source = 'tap_in_home'
+		THEN number_of_people_served
+	ELSE 0 END)* 100.0 / pt.total_population), 0) AS tap_in_home,
+    ROUND((SUM(CASE WHEN type_of_water_source = 'tap_in_home_broken'
+		THEN number_of_people_served
+	ELSE 0 END)* 100.0 / pt.total_population),0) AS tap_in_home_broken,
+    ROUND((SUM(CASE WHEN type_of_water_source = 'shared_tap'
+		THEN number_of_people_served
+	ELSE 0 END)* 100.0 / pt.total_population), 0) AS shared_taps,
+    ROUND((SUM(CASE WHEN type_of_water_source = 'river'
+		THEN number_of_people_served
+	ELSE 0 END) * 100.0 / pt.total_population), 0) AS river
+FROM combined_analysis ca
+JOIN province_total_pop pt
+	ON pt.province_name = ca.province_name
+GROUP BY ca.province_name;
+
+# This creates a pivot table with percentages of people using each water source per province. This shares alot of insight.
 
