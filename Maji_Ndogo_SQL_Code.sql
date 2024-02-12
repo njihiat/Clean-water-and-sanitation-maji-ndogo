@@ -366,7 +366,6 @@ GROUP BY province_name)
 
 SELECT 
 	ca.province_name,
-    total_population,
     ROUND((SUM(CASE WHEN type_of_water_source = 'well'
 		THEN number_of_people_served
 	ELSE 0 END)*100.0 / pt.total_population), 0) AS well,
@@ -388,4 +387,42 @@ JOIN province_total_pop pt
 GROUP BY ca.province_name;
 
 # This creates a pivot table with percentages of people using each water source per province. This shares alot of insight.
+
+#Viewing this table per town will light up the story very much
+
+CREATE TEMPORARY TABLE town_aggregated_table  # Create a temporary table to store the result set
+WITH town_total_pop AS (
+SELECT
+	province_name,
+    town_name,
+    SUM(number_of_people_served) AS total_population
+FROM combined_analysis
+GROUP BY province_name, town_name)
+
+SELECT 
+	ca.province_name,
+    ca.town_name,
+    ROUND((SUM(CASE WHEN type_of_water_source = 'well'
+		THEN number_of_people_served
+	ELSE 0 END)*100.0 / tt.total_population), 0) AS well,
+   ROUND((SUM(CASE WHEN type_of_water_source = 'tap_in_home'
+		THEN number_of_people_served
+	ELSE 0 END)* 100.0 / tt.total_population), 0) AS tap_in_home,
+    ROUND((SUM(CASE WHEN type_of_water_source = 'tap_in_home_broken'
+		THEN number_of_people_served
+	ELSE 0 END)* 100.0 / tt.total_population),0) AS tap_in_home_broken,
+    ROUND((SUM(CASE WHEN type_of_water_source = 'shared_tap'
+		THEN number_of_people_served
+	ELSE 0 END)* 100.0 / tt.total_population), 0) AS shared_taps,
+    ROUND((SUM(CASE WHEN type_of_water_source = 'river'
+		THEN number_of_people_served
+	ELSE 0 END) * 100.0 / tt.total_population), 0) AS river
+FROM combined_analysis ca
+JOIN town_total_pop tt
+	ON tt.town_name = ca.town_name AND tt.province_name = ca.province_name
+GROUP BY ca.province_name, ca.town_name
+ORDER BY ca.town_name;
+
+SELECT * FROM town_aggregated_table order by tap_in_home ASC;
+
 
