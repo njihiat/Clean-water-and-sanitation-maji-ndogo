@@ -94,6 +94,27 @@ Lalitha Kaburi	7
 Further investigating these records, mention of corrupt officers is recorded by the auditor as statements from the citizens of Maji Ndogo.
 This is a serious crime considering the dedication our President has put into finding a solution to the country's water crisis.
 
+----- CHARTING THE DATA INTO MEANINGFUL VIEWs ------------
+Now that we have understoood the situation of Maji Ndogo water sector, let us create meaningful view that provide essential insights to
+decision makers. This will help discern the materials needed, plan the budget, identify areas that need immediate attention and guide our 
+engineers on to the right direction by creating a job list.
+
+----- WHERE TO START ------------
+After creating a view and a CTE, we have a table showing the percentage of people per water source in the 5 differnt provinces.
+Akatsi	5993306	23	14	10	49	5
+Kilimani	6584764	20	13	12	47	8
+Sokoto	5774434	15	16	10	38	21
+Hawassa	3843810	24	15	15	43	4
+Amanzi	5431826	7	28	24	38	3
+From this table
+  - We can see that most (21%) people in Sokoto use river water, so we can dispatch our drilling team to drill wells first. 
+  - Majority of people in Amanzi use tap water (52%), but half of them (24%) are broken, a team of engineers can be sent to fix the broken infrastructure,
+      this way we are going to connect most people to water as well as reduce queue time in the shared taps (38%).
+  - Our drilling teams can then proceed to Akatsi, Then Kilimani and Afterwards Hawassa.
+  - The team dispatched to clean wells will start in Hawassa then Akatsi and Afterwards Kilimani
+Following these actions, we will have increased the number of people able to access clean water.
+
+
 
 
 
