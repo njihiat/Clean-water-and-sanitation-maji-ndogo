@@ -425,4 +425,72 @@ ORDER BY ca.town_name;
 
 SELECT * FROM town_aggregated_table order by tap_in_home ASC;
 
+# Now that we know what to do and where, let us create a project_progress table to track the progress.
+
+CREATE TABLE project_progress (
+project_id SERIAL PRIMARY KEY, # unique so that no sources is visited more than once
+source_id VARCHAR(20) NOT NULL REFERENCES water_source(source_id) ON DELETE CASCADE ON UPDATE CASCADE,
+				#source id should not be null and should refer to the source id of the water source table for data integrity
+address VARCHAR(50),
+town VARCHAR(30),
+province VARCHAR(30),
+source_type VARCHAR(50),
+improvement VARCHAR(50),  #this is the type of improvement to make at the source
+source_status VARCHAR(50) DEFAULT 'Backlog' CHECK (Source_status IN ('Backlog', 'In progress', 'Complete')),
+			# We limit what can be updated to 3 choices but the default is backlog which means that the project is yet to start.
+date_of_completion DATE, # this is the date the team completes a fix.
+comments TEXT
+);
+
+# We need to update this table with information of the sources to be updated.
+
+SELECT 
+	water_source.source_id,
+    location.address,
+    location.town_name,
+    location.province_name,
+    water_source.type_of_water_source,
+    well_pollution.results
+FROM water_source
+INNER JOIN visits
+	ON visits.source_id = water_source.source_id
+INNER JOIN location
+	ON visits.location_id = location.location_id
+LEFT JOIN well_pollution
+	ON visits.source_id = well_pollution.source_id
+WHERE visit_count = 1 AND (results != 'Clean' OR type_of_water_source IN ('tap_in_home_broken', 'river')
+								OR (type_of_water_source = 'Shared_tap' AND time_in_queue >= 30));
+                                
+# We got 25398 sources to improve. 
+#Let us add these sources into our progress table
+
+INSERT INTO project_progress (source_id, address, town, province, source_type, improvement)
+	
+SELECT 
+	water_source.source_id,
+    location.address,
+    location.town_name,
+    location.province_name,
+    water_source.type_of_water_source,
+    CASE WHEN results = 'Contaminated: Biological' THEN 'Install UV filters'
+		WHEN results = 'Contaminated: Chemical' THEN 'Install RO filters'
+        WHEN type_of_water_source = 'river' THEN ' Drill well'
+        WHEN type_of_water_source = 'tap_in_home_broken' THEN 'Diagnose Local Infrastructure'
+        WHEN type_of_water_source = 'shared_tap' AND time_in_queue >= 30 THEN CONCAT("Install", FLOOR(time_in_queue/30), " taps nearby")
+	ELSE NULL END
+FROM water_source
+INNER JOIN visits
+	ON visits.source_id = water_source.source_id
+INNER JOIN location
+	ON visits.location_id = location.location_id
+LEFT JOIN well_pollution
+	ON visits.source_id = well_pollution.source_id
+WHERE visit_count = 1 AND (results != 'Clean' OR type_of_water_source IN ('tap_in_home_broken', 'river')
+								OR (type_of_water_source = 'Shared_tap' AND time_in_queue >= 30));
+                                
+#Finally we have a table where our engineers can add data into as they also track the progress of the project.
+
+
+    
+
 
