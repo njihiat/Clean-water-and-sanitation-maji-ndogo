@@ -68,7 +68,7 @@ By now there are some insights that we have uncovered in the numbers and charact
     we need to address.
 3. Benefiting the majority and concurrently diminishing wait times for others can be achieved by addressing and improving our 
     existing infrastructure; we need to focus on this.
-4. Allocating resources more effectively calls for temporarily postponing the fixing of broken taps, a step we need to take at the moment.
+4. Allocating resources more effectively calls for temporarily postponing the fixing of broken taps, a step we need to take now.
 5. To tap into abundant sources waiting to be optimized and enhanced, our engineers need to prepare for venturing into rural areas,
     which we need them to do.
 
@@ -92,15 +92,15 @@ Malachi Mavuso	21
 Zuriel Matembo	17	
 Lalitha Kaburi	7	
 Further investigating these records, mention of corrupt officers is recorded by the auditor as statements from the citizens of Maji Ndogo.
-This is a serious crime considering the dedication our President has put into finding a solution to the country's water crisis.
+This is a serious crime considering our President's dedication to finding a solution to the country's water crisis.
 
 ----- CHARTING THE DATA INTO MEANINGFUL VIEWs ------------
-Now that we have understoood the situation of Maji Ndogo water sector, let us create meaningful view that provide essential insights to
-decision makers. This will help discern the materials needed, plan the budget, identify areas that need immediate attention and guide our 
-engineers on to the right direction by creating a job list.
+Now that we have understood the situation of the Maji Ndogo water sector, let us create a meaningful view that provides essential insights to
+decision-makers. This will help discern the materials needed, plan the budget, identify areas that need immediate attention, and guide our 
+engineers in the right direction by creating a job list.
 
 ----- WHERE TO START ------------
-After creating a view and a CTE, we have a table showing the percentage of people per water source in the 5 differnt provinces.
+After creating a view and a CTE, we have a table showing the percentage of people per water source in the 5 different provinces.
 Akatsi	5993306	23	14	10	49	5
 Kilimani	6584764	20	13	12	47	8
 Sokoto	5774434	15	16	10	38	21
@@ -108,15 +108,69 @@ Hawassa	3843810	24	15	15	43	4
 Amanzi	5431826	7	28	24	38	3
 From this table
   - We can see that most (21%) people in Sokoto use river water, so we can dispatch our drilling team to drill wells first. 
-  - Majority of people in Amanzi use tap water (52%), but half of them (24%) are broken, a team of engineers can be sent to fix the broken infrastructure,
+  - The majority of people in Amanzi use tap water (52%), but half of them (24%) are broken, a team of engineers can be sent to fix the broken infrastructure,
       this way we are going to connect most people to water as well as reduce queue time in the shared taps (38%).
-  - Our drilling teams can then proceed to Akatsi, Then Kilimani and Afterwards Hawassa.
+  - Our drilling teams can then proceed to Akatsi, Kilimani, and Afterwards Hawassa.
   - The team dispatched to clean wells will start in Hawassa then Akatsi and Afterwards Kilimani
 Following these actions, we will have increased the number of people able to access clean water.
 
-We create another result set of towns to get a better understanding of the situation.
+We create another result set of towns to get a better understanding of the situation. The result set shows clear numbers per town.
+For example, we can see that Amina town in Amanzi province has 56% of the population using broken taps and 24% population using 
+shared taps. These statistics are alarming and need immediate attention.
 
+-----------------SUMMARY REPORT -----------------------------------------------
 
+Earlier insights suggested that:
+1. Most water sources in the country are in the rural areas
+2. 43% of our people are using shared taps and one tap is often shared by 2000 people
+3. 31% of the people have water infrastructure in their homes but 45% of them face broken
+  systems. Towns like Amina in Amanzi, rural parts of Amanzi have high populations facing 
+  the challenge
+4. 18% of the population uses wells but only 28% of the total wells are clean. Hawassa Prvince
+has a high number of people using wells.
+5. The people often face long wait times at the public taps (120 minutes). These queues 
+are longest on Saturdays, mornings and evenings.
+
+---PLAN OF THE ACTION ---
+
+It's for the good of the people if we focus on the sources that affect a lot of people.
+Most people will benefit if we fix shared taps first.
+Most wells are contaminated and cleaning this will benefit a lot of people.
+Fixing broken infrastructure will help the huge population with broken taps and consequently
+shorten the queuing time for others using public taps.
+Installing taps in homes is resource-intensive and it is better if we improve that later.
+Most water sources are in rural areas, our team will need to overcome the challenges on the task
+
+--- PRACTICAL SOLUTIONS ---
+
+If a community is using a river, trucks will be dispatched to those regions to provide water
+temporarily in the short term while our team drills the wells. Sokoto will be the first.
+If a community is using a well, our team will install filters to purify the water. We also
+need to figure out why these sources are polluted.
+For shared taps, we can dispatch water tankers to the busiest days as our team starts installing
+extra taps to reduce queue times to less than 30 minutes (UN standards)
+Installing taps in the home is resource-intensive and better suited as a long-term goal.
+Fixing broken infrastructure offers a significant impact, a huge population will benefit from
+a single intervention.
+
+Our goal is to implement the plan. We have information on where to start but our team will need
+the address, the type of water source to improve, and what should be done to improve it.
+We need to update and track the progress in the database. Let's create a Project_progress table.
+
+The improvements are:
+1. Rivers - drill wells
+2. Wells -  If contaminated chemically install RO filter, if biologically Install UV Filter
+3. Shared taps - if the queue is longer than 30 minutes, install X taps where 
+                  X = FLOOR(time_in_queue / 30)
+4. tap in a home broken - Diagnose local infrastructure
+
+So using this logic, let's add the information to the project's progress.
+Finally, we have a table in our database where we can track the progress of the project. Our team
+of engineers now has a lead into the project, they know where to start and the next source to be fixed
+
+We send our report to President Nalendi so that the team can be dispatched.
+
+That's well Done!!!
 
 
 
