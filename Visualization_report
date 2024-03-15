@@ -1,0 +1,10 @@
+PROJECT VISUALIZATION AND DASHBOARD
+This is a series of visually engaging reports created using power BI and compiled here as images. These reports aim to present the data in a manner that is not only accessible but also compelling, ensuring that the key messages resonate with the stakeholders.
+In the visuals, we will utilize clean and intuitive designs with a color scheme that conveys the water crisis theme. 
+There is additional data resulting from picture taken at the queue and later analyzed using AI and Machine learning. The AI identifies the different people in the image, classifies them and then counts each type. A short explanation of the new data:
+•	hour_of_day - The hour of day at the time_of_record. This will help us aggregate by the hour of the day. 
+•	day_of_week - The day of the week from the time_of_record. This will help us aggregate by the day of the week.
+•	percent_male - The percentage of men in the queue at the time_of_record. 
+•	percent_female - The percentage of men in the queue at the time_of_record. 
+•	percent_child - The percentage of men in the queue at the time_of_record.
+
