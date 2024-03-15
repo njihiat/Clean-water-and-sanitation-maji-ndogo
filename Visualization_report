@@ -1,11 +1,11 @@
 PROJECT VISUALIZATION AND DASHBOARD
-This is a series of visually engaging reports created using power BI and compiled here as images. 
+This is a series of visually engaging reports created using Power BI and compiled here as images. 
 These reports aim to present the data in a manner that is not only accessible but also compelling,
 ensuring that the key messages resonate with the stakeholders.
 
 In the visuals, we will utilize clean and intuitive designs with a color scheme that conveys 
 the water crisis theme. 
-There is additional data resulting from picture taken at the queue and later analyzed using AI and 
+There is additional data resulting from pictures taken at the queue and later analyzed using AI and 
 Machine learning. The AI identifies the different people in the image, classifies them and then 
 counts each type. 
 
@@ -29,4 +29,12 @@ After SQL exploration, These insights were extracted:
     - Queues are longer on Saturdays
     - Queues are longer in the mornings and evenings
     - Wednesdays and Sundays have the shortest queues.
+
+The first visual will show insights into:
+    1. Rural vs. Urban population
+    2. 43% of the population using shared taps
+    3. 31% of the population having water infrastructure in their homes
+    4. 18% of the people using wells.
+
+    
 
